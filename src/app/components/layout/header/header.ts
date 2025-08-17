@@ -32,4 +32,8 @@ export class Header implements AfterViewInit {
   setActive(item: string) {
     this.activeItem = item;
   }
+  orderonline(){
+    console.log('done');
+    
+  }
 }
