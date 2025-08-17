@@ -13,18 +13,17 @@
             <button class="header-btn"> <i class="fa fa-user" aria-hidden="true"></i> </button>
             <button class="header-btn"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
             <button class="header-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
-            <button class="order-online" (click)="orderonline()"  >order online</button>
+            <button class="order-online"  >order online</button>
     </div>
     </div>
 
     <section class="carousel">
-      <div >
-        <div class="carouselname">
-          test1
-        </div>
-          <div class="carouseldiscription">
-            test2
-          </div>
-      </div>
+  <swiper-container [config]="swiperConfig">
+      <swiper-slide *ngFor="let item of items">
+        <h1>{{item.description}}</h1>
+        <h3>{{item.title}}</h3>
+      </swiper-slide>
+    </swiper-container>
+
     </section>
 </div>
