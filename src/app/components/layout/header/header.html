@@ -17,7 +17,7 @@
     </div>
     </div>
 
-    <section class="carousel">
+    <!-- <section class="carousel">
   <swiper-container [config]="swiperConfig">
       <swiper-slide *ngFor="let item of items">
         <h1>{{item.description}}</h1>
@@ -25,5 +25,36 @@
       </swiper-slide>
     </swiper-container>
 
-    </section>
+    </section> -->
+<section class="slider-container">
+  <div class="slides-wrapper">
+    <div
+      class="slide"
+      *ngFor="let slide of slides; let i = index; trackBy: trackByIndex"
+      [class.active]="i === currentIndex"
+    >
+      <div class="content">
+        <h2>{{ slide.title }}</h2>
+        <p>{{ slide.description }}</p>
+        <button (click)="openUrl(slide.url)">{{ slide.buttonText }}</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Arrows -->
+  <button class="arrow left" (click)="prevSlide()">&#10094;</button>
+  <button class="arrow right" (click)="nextSlide()">&#10095;</button>
+
+  <!-- Dots -->
+  <div class="dots">
+    <span
+      *ngFor="let slide of slides; let i = index; trackBy: trackByIndex"
+      class="dot"
+      [class.active]="i === currentIndex"
+      (click)="goToSlide(i)"
+    ></span>
+  </div>
+</section>
+
+
 </div>

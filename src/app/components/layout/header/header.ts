@@ -3,41 +3,87 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import { SwiperOptions } from 'swiper/types';
 import { register } from 'swiper/element/bundle';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { NgFor } from '@angular/common';
-
+import { CommonModule } from '@angular/common';
+interface SliderItem {
+  title: string;
+  description: string;
+  buttonText: string;
+  url: string;
+}
 @Component({
   selector: 'app-header',
   templateUrl: './header.html',
   styleUrls: ['./header.scss'],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // Add this line
-  imports: [NgFor], // Add this
+  imports: [CommonModule], // Add this
 
 })
+
 export class Header implements OnInit {
     ngOnInit() {
     register(); // Required for Swiper web components
+    this.startAutoSlide();
+
   }
- swiperConfig: SwiperOptions = {
-    slidesPerView: 3,
-      autoplay: {
-    delay: 4000,        // 4 second delay
-    disableOnInteraction: false, // Continue after user interaction
-    pauseOnMouseEnter: false     // Don't pause on hover
-  },
-    spaceBetween: 30,
-    navigation: true,
-    pagination: { clickable: true },
-    loop: true,
-    breakpoints: {
-      640: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 }
+  slides: SliderItem[] = [
+    {
+      title: 'Explore our furniture collection',
+      description: 'Carefully made upholstery from the best materials.',
+      buttonText: 'Shop Now',
+      url: 'https://example.com/shop'
+    },
+    {
+      title: 'Modern style for your home',
+      description: 'Perfect finish and contemporary designs.',
+      buttonText: 'View Collection',
+      url: 'https://example.com/modern'
+    },
+    {
+      title: 'Comfort and elegance combined',
+      description: 'Make your living space both cozy and stylish.',
+      buttonText: 'Learn More',
+      url: 'https://example.com/comfort'
     }
-  };
-  items = [
-    { title: 'Item 1', description: 'hello' },
-    { title: 'Item 2', description: '1' },
-    { title: 'Item 3', description: '2' },
-    { title: 'Item 4', description: '3' },
-    { title: 'Item 5', description: '4' }
   ];
+
+  currentIndex = 0;
+  private intervalId?: number;
+  private readonly slideInterval = 4000; // 4 seconds
+
+
+  ngOnDestroy(): void {
+    this.stopAutoSlide();
+  }
+
+  startAutoSlide(): void {
+    this.stopAutoSlide();
+    this.intervalId = window.setInterval(() => this.nextSlide(), this.slideInterval);
+  }
+
+  stopAutoSlide(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = undefined;
+    }
+  }
+
+  nextSlide(): void {
+    this.currentIndex = (this.currentIndex + 1) % this.slides.length;
+  }
+
+  prevSlide(): void {
+    this.currentIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+  }
+
+  goToSlide(index: number): void {
+    this.currentIndex = index;
+  }
+
+  openUrl(url: string): void {
+    window.open(url, '_blank');
+  }
+
+  trackByIndex(index: number): number {
+    return index;
+  }
 }
