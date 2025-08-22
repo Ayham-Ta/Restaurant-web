@@ -1,7 +1,7 @@
 import { Component, ElementRef, AfterViewInit, ViewChild, OnInit } from '@angular/core';
 import '@fortawesome/fontawesome-free/css/all.css';
-import { SwiperOptions } from 'swiper/types';
-import { register } from 'swiper/element/bundle';
+// import { SwiperOptions } from 'swiper/types';
+// import { register } from 'swiper/element/bundle';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 interface SliderItem {
@@ -21,8 +21,8 @@ interface SliderItem {
 
 export class Header implements OnInit {
     ngOnInit() {
-    register(); // Required for Swiper web components
-    this.startAutoSlide();
+
+      this.startAutoSlide();
 
   }
   slides: SliderItem[] = [
@@ -48,16 +48,16 @@ export class Header implements OnInit {
 
   currentIndex = 0;
   private intervalId?: number;
-  private readonly slideInterval = 4000; // 4 seconds
+  // private readonly slideInterval = 4000; // 4 seconds
 
 
   ngOnDestroy(): void {
-    this.stopAutoSlide();
+    // this.stopAutoSlide();
   }
 
   startAutoSlide(): void {
     this.stopAutoSlide();
-    this.intervalId = window.setInterval(() => this.nextSlide(), this.slideInterval);
+    // this.intervalId = window.setInterval(() => this.nextSlide(), this.slideInterval);
   }
 
   stopAutoSlide(): void {
