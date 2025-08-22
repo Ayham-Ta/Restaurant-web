@@ -4,10 +4,11 @@ import { Header } from "./components/layout/header/header";
 import { Main } from "./components/main/main";
 import { Footer } from "./components/layout/footer/footer";
 import { Background } from "./components/layout/background/background";
+import { Menu } from "./components/layout/menu/menu";
 
 @Component({
   selector: 'app-root',
-  imports: [Header, Main, Footer, Background],
+  imports: [Header, Main, Footer, Background, Menu],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

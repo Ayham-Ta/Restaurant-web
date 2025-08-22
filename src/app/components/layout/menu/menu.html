@@ -1,1 +1,45 @@
-<p>menu works!</p>
+<nav class="navbar">
+  <div class="logo">
+    <a routerLink="/">Shein</a>
+  </div>
+
+  <div class="nav-wrapper">
+    <!-- Left arrow -->
+    <button class="scroll-btn left" (click)="scrollNav(-200)">&#9664;</button>
+
+    <!-- Scrollable nav links -->
+
+
+    <!-- Right arrow -->
+    <button class="scroll-btn right" (click)="scrollNav(200)">&#9654;</button>
+  </div>
+
+  <div class="user">
+    <a routerLink="/account">Account</a>
+    <a routerLink="/cart">Cart</a>
+  </div>
+  <section class="container">
+<div class="slider-container">
+  <div class="slides-wrapper">
+    <div class="slide" *ngFor="let image of images; let i = index" [class.active]="i === currentIndex">
+      <img [src]="image.url" alt="Slide Image" />
+      <div class="overlay">
+        <h2>{{ image.title }}</h2>
+        <p>{{ image.subtitle }}</p>
+      </div>
+    </div>
+  </div>
+  <button class="arrow left" (click)="prevSlide()">&#10094;</button>
+  <button class="arrow right" (click)="nextSlide()">&#10095;</button>
+  <div class="dots">
+    <span
+      *ngFor="let img of images; let i = index"
+      class="dot"
+      [class.active]="i === currentIndex"
+      (click)="goToSlide(i)"
+    ></span>
+  </div>
+</div>
+ 
+</section>
+</nav>
