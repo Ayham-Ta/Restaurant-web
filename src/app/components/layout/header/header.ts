@@ -48,16 +48,16 @@ export class Header implements OnInit {
 
   currentIndex = 0;
   private intervalId?: number;
-  // private readonly slideInterval = 4000; // 4 seconds
+  private readonly slideInterval = 4000; // 4 seconds
 
 
   ngOnDestroy(): void {
-    // this.stopAutoSlide();
+    this.stopAutoSlide();
   }
 
   startAutoSlide(): void {
     this.stopAutoSlide();
-    // this.intervalId = window.setInterval(() => this.nextSlide(), this.slideInterval);
+    this.intervalId = window.setInterval(() => this.nextSlide(), this.slideInterval);
   }
 
   stopAutoSlide(): void {
@@ -80,10 +80,34 @@ export class Header implements OnInit {
   }
 
   openUrl(url: string): void {
-    window.open(url, '_blank');
+    window.open(url, '_blank');    
   }
 
   trackByIndex(index: number): number {
     return index;
+  }
+  HomeBtn(){
+    console.log("home");
+  }
+  MenuBtn(){
+    console.log("MenuBtn");
+  }
+  AboutBtn(){
+    console.log("Aboutus");
+  }
+  BookTableBtn(){
+    console.log("BookTableBtn");
+  }
+  Account(){
+    console.log("Account");
+  }
+  Cart(){ 
+    console.log("Cart");
+  }
+  Search(){
+    console.log("Search");
+  }
+  OrderOnline(){
+    console.log("OrderOnline");
   }
 }

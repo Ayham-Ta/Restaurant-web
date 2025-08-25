@@ -1,22 +1,27 @@
 <div class="img-hdr"></div>
-<div class="d-flex">
+<div class="">
 <div id="header" class=" row w-100">
-    <div class="col-lg-4 m-0 rest-name justify-content-center d-flex">Ashraf</div>
-    <div class="col-lg-4 m-0 justify-content-center d-flex">
+    <div (click)="HomeBtn()" class="col-lg-4 m-0 rest-name">
+        <button class="title">Ashraf</button>
+    </div>
+    <div class="col-lg-4 m-0 flexableLaptop ">
         <ul class=" header-list m-0">
-            <li class="header-btn">Home</li>
-            <li class="header-btn">menu</li>
-            <li class="header-btn">About</li>
-            <li class="header-btn">Book table</li>
+            <li (click)="HomeBtn()" class="header-btn">Home</li>
+            <li (click)="MenuBtn()" class="header-btn">Menu</li>
+            <li (click)="AboutBtn()" class="header-btn">About</li>
+            <li (click)="BookTableBtn()" class="header-btn">Book Table</li>
     </ul>
     </div>
-    <div class="col-lg-4 m-0 justify-content-center d-flex">
-            <button class="header-btn"> <i class="fa fa-user" aria-hidden="true"></i> </button>
-            <button class="header-btn"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
-            <button class="header-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
-            <button class="order-online"  >order online</button>
+    <div class="col-lg-4 m-0 flexableLaptop ">
+            <button (click)="Account()" class="header-btn"> <i class="fa fa-user" aria-hidden="true"></i> </button>
+            <button (click)="Cart()" class="header-btn"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+            <button (click)="Search()" class="header-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+            <button (click)="OrderOnline()" class="order-online"  >order online</button>
     </div>
     </div>
+<div class=" row flexableTablet">
+<button id="header" class="title">Ashraf</button>
+</div>
 
     <!-- <section class="carousel">
   <swiper-container [config]="swiperConfig">
@@ -43,8 +48,8 @@
   </div>
 
   <!-- Arrows -->
-  <button class="arrow left" (click)="prevSlide()">&#10094;</button>
-  <button class="arrow right" (click)="nextSlide()">&#10095;</button>
+  <!-- <button class="arrow left" (click)="prevSlide()">&#10094;</button>
+  <button class="arrow right" (click)="nextSlide()">&#10095;</button> -->
 
   <!-- Dots -->
   <div class="dots">

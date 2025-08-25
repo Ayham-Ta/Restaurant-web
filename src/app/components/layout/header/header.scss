@@ -1,8 +1,7 @@
 #header{
     min-height: 50px;
     padding: 15px;
-    position: absolute;
-    top: 0;
+    position: relative;
 }
 .header-btn{
     border: none ;
@@ -32,10 +31,16 @@
     font-weight: 600;
 }
 .rest-name{
-    padding-inline-start: 30px;
-    color: white;
-    font-family: cursive;
-    font-size: 24px;
+  display: flex;
+  padding-inline-start: 30px;
+  color: white;
+  font-family: cursive;
+  font-size: 24px;
+}
+.title{
+  border: none;
+  background: unset;
+  color: white;
 }
 .carousel{
   position: absolute;
@@ -99,7 +104,7 @@
       justify-content: center;
     }
     .slider-container {
-  position: relative;
+  // position: relative;
   width: 100%;
   max-width: 1200px;
   margin: auto;
@@ -113,7 +118,6 @@
 
     .slide {
       position: absolute;
-      inset: 0;
       opacity: 0;
       visibility: hidden;
       transition: opacity 0.5s ease, visibility 0.5s;
@@ -121,6 +125,7 @@
       align-items: center;
       justify-content: center;
       background: none;
+      top: 20%;
 
       &.active {
         opacity: 1;
@@ -130,6 +135,8 @@
       .content {
         padding: 1rem;
         max-width: 600px;
+        color: white;
+        font-family: cursive;
 
         h2 {
           font-size: 2rem;
@@ -214,4 +221,23 @@
     background-position: center; /* centers the image */
     background-repeat: no-repeat;
     position: absolute;
+}
+.flexableLaptop{
+  display: flex;
+  justify-content: center;  
+}
+@media(max-width : 768px){
+  .flexableLaptop{
+    display: none !important;
+  }
+}
+@media(min-width : 425px) and (max-width : 768px){
+  .flexableTablet{
+    display: flex !important;
+  }
+}
+@media(min-width : 768px){
+    .flexableTablet{
+    display: none !important;
+  }
 }
